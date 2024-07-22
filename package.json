@@ -1,0 +1,36 @@
+{
+  "name": "@tanglelabs/jwk-identity-adapter",
+  "version": "0.1.0",
+  "description": "did:jwk adapter",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "repository": "https://github.com/tangle-labs/key-identity-adapter",
+  "author": "Coodos <info@coodos.co>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@sphereon/did-resolver-jwk": "0.10.2-unstable.5",
+    "@tanglelabs/ssimon": "^0.7.0",
+    "@types/elliptic": "^6.4.18",
+    "base64url": "^3.0.1",
+    "did-jwt": "^7.2.6",
+    "did-jwt-vc": "^3.2.6",
+    "did-resolver": "^4.1.0",
+    "eckey-utils": "^0.7.14",
+    "elliptic": "^6.5.6",
+    "fix-esm-import-path": "^1.5.0",
+    "jose": "^5.6.3",
+    "jsonschema": "^1.4.1",
+    "key-did-resolver": "^3.0.0",
+    "pg": "^8.12.0"
+  },
+  "scripts": {
+    "dev": "nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --trace-warnings --loader ts-node/esm' src/test.ts",
+    "build": "tsc; fix-esm-import-path ./dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
