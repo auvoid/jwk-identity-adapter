@@ -1,19 +1,19 @@
 # DID Key Adapter
 
-`did:key` adapter for `@tanglelabs/ssimon`
+`did:jwk` adapter for `@tanglelabs/ssimon`
 
 ## Installation
 
 ### 1. npm
 
 ```sh
-$ npm install @tanglelabs/ssimon @tanglelabs/key-identity-adapter
+$ npm install @tanglelabs/ssimon @tanglelabs/jwk-identity-adapter
 ```
 
 ### 2. yarn
 
 ```sh
-$ yarn add @tanglelabs/ssimon @tanglelabs/key-identity-adapter
+$ yarn add @tanglelabs/ssimon @tanglelabs/jwk-identity-adapter
 ```
 
 ## Usage
@@ -28,6 +28,7 @@ $ yarn add @tanglelabs/ssimon @tanglelabs/key-identity-adapter
     const did = await manager.createDid({
         alias: "asdf",
         store,
+        method: "jwk",
     });
 
     console.log(did.getDid());
@@ -37,5 +38,5 @@ $ yarn add @tanglelabs/ssimon @tanglelabs/key-identity-adapter
 ### Result
 
 ```
-did:key:z6MkgMrYL9gZDeDq9d4ZRQquiE83cuwN6BUzHDVLNz1CpAmG
+did:jwk:eyJrdHkiOiJFQyIsIngiOiJ2NWItdkVHVDdEbmNRbDBDS21xSm1rWDZCNVhDU3ZfbWt4RjVzQV9VWko4IiwieSI6IktZLTdJOGI5SXV5c0Ixb0I0cWRtQkN1bzlUWHo4M0QzUUxTcFZJTG5nMlUiLCJjcnYiOiJQLTI1NiJ9
 ```
