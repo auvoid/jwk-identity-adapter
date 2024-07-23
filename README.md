@@ -1,4 +1,4 @@
-# DID Key Adapter
+# DID JWK Adapter
 
 `did:jwk` adapter for `@tanglelabs/ssimon`
 
@@ -21,7 +21,7 @@ $ yarn add @tanglelabs/ssimon @tanglelabs/jwk-identity-adapter
 ```ts
 (async () => {
     const manager = await IdentityManager.build({
-        adapter: DidKeyAdapter,
+        adapters: [DidJwkAdapter],
         storage,
     });
 
