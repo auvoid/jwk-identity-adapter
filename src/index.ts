@@ -68,7 +68,7 @@ export class DidJwkAdapter implements NetworkAdapter {
 
         const keyPair = ec.genKeyPair();
 
-        const generatedSeed = keyPair.getPrivate().toString();
+        const generatedSeed = keyPair.getPrivate().toString("hex");
 
         const identity = await DidJwkAccount.build({
             seed: seed ?? generatedSeed,
