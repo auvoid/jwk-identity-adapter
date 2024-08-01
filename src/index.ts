@@ -11,6 +11,7 @@ import {
     NetworkAdapter,
     NetworkAdapterOptions,
     StorageSpec,
+    bytesToString,
 } from "@tanglelabs/ssimon";
 import EC from "elliptic";
 // @ts-ignore
@@ -30,6 +31,7 @@ import { Resolver } from "did-resolver";
 import { Validator } from "jsonschema";
 import { OpenBadgeSchema } from "./ob-schema";
 import crypto from "crypto";
+import { stringToBytes } from "did-jwt/lib/util";
 
 const ec = new EC.ec("p256");
 export class DidJwkAdapter implements NetworkAdapter {
@@ -68,7 +70,8 @@ export class DidJwkAdapter implements NetworkAdapter {
 
         const keyPair = ec.genKeyPair();
 
-        const generatedSeed = keyPair.getPrivate().toString("hex");
+        const seedBuffer = keyPair.getPrivate().toBuffer();
+        const generatedSeed = bytesToString(seedBuffer);
 
         const identity = await DidJwkAccount.build({
             seed: seed ?? generatedSeed,
@@ -119,6 +122,7 @@ export class DidJwkAccount implements IdentityAccount {
 
         const keyPair = ec.keyFromPrivate(seed);
         const pkcs8 = await this.getPKCS8FromKeyPair(keyPair);
+        console.log("seed", seed);
 
         const joseJwk = await jose.importPKCS8(pkcs8, "ES256");
         const jwk = await jose.exportJWK(joseJwk);
@@ -168,10 +172,6 @@ export class DidJwkAccount implements IdentityAccount {
         return document;
     }
 
-    private static ab2str(buf: Buffer | ArrayBuffer) {
-        return String.fromCharCode.apply(null, new Uint8Array(buf));
-    }
-
     private static async getPKCS8FromKeyPair(keyPair: EC.ec.KeyPair) {
         const curveName = "prime256v1";
         const pems = eckey.generatePem({
@@ -183,24 +183,6 @@ export class DidJwkAccount implements IdentityAccount {
             .createPrivateKey({ key: sec1Pem, format: "pem", type: "sec1" })
             .export({ type: "pkcs8", format: "pem" })
             .toString();
-
-        // const privateKey = await crypto.subtle.importKey(
-        //     "raw",
-        //     keyPair.getPrivate().toBuffer(),
-        //     {
-        //         name: "ECDSA",
-        //         namedCurve: "P-256",
-        //     },
-        //     true,
-        //     ["sign", "verify"]
-        // );
-
-        // const pkcs8Buffer = await crypto.subtle.exportKey("pkcs8", privateKey);
-        // const exportedAsString = this.ab2str(pkcs8Buffer);
-        // const exportedAsBase64 = window.btoa(exportedAsString);
-        // const pkcs8 = `-----BEGIN PRIVATE KEY-----\n${exportedAsBase64}\n-----END PRIVATE KEY-----`;
-
-        // console.log(pkcs8);
 
         return pkcs8PemFromSec1;
     }
@@ -327,6 +309,8 @@ export class DidJwkCredentialsManager<
         const vcIssuer = {
             did: this.account.getDid(),
             signer,
+            alg: "ES256",
+            kid: this.account.getDid() + "#0",
         };
         const types = Array.isArray(type) ? [...type] : [type];
 
