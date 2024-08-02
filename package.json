@@ -1,6 +1,6 @@
 {
   "name": "@tanglelabs/jwk-identity-adapter",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "did:jwk adapter",
   "main": "dist/index.js",
   "types": "dist/index.d.js",

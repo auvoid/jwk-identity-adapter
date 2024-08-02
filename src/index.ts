@@ -349,12 +349,8 @@ export class DidJwkCredentialsManager<
         const signer = didJWT.ES256Signer(
             this.account.keyPair.getPrivate().toBuffer()
         );
-        const didId =
-            this.account.getDid() +
-            "#" +
-            this.account.getDid().split("did:key:")[1];
         const vcIssuer = {
-            did: didId,
+            did: this.account.getDid(),
             signer,
             alg: "ES256",
             kid: this.account.getDid() + "#0",
