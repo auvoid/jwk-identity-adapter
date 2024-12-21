@@ -1,6 +1,6 @@
 {
   "name": "@tanglelabs/jwk-identity-adapter",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "did:jwk adapter",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -10,7 +10,7 @@
   "type": "module",
   "dependencies": {
     "@sphereon/did-resolver-jwk": "0.10.2-unstable.5",
-    "@tanglelabs/ssimon": "^0.8.1",
+    "@tanglelabs/ssimon": "0.8.1",
     "@types/elliptic": "^6.4.18",
     "base64url": "^3.0.1",
     "did-jwt": "^7.2.6",
@@ -23,9 +23,6 @@
     "jsonschema": "^1.4.1",
     "key-did-resolver": "^3.0.0",
     "pg": "^8.12.0"
-  },
-  "peerDependencies": {
-    "@tanglelabs/ssimon": "0.8.1"
   },
   "scripts": {
     "dev": "nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --trace-warnings --loader ts-node/esm' src/test.ts",
