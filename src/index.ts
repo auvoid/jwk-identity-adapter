@@ -140,9 +140,7 @@ export class DidJwkAdapter implements NetworkAdapter {
    * @param {CreateDidProps} props
    * @returns {Promise<DidCreationResult>}
    */
-  async createDid<T extends StorageSpec<Record<string, any>, any>>(
-    props: CreateDidProps<T>
-  ): Promise<DidCreationResult> {
+  async createDid(props: CreateDidProps): Promise<DidCreationResult> {
     const { seed, alias, store } = props;
 
     const keyPair = ec.genKeyPair();
