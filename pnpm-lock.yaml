@@ -12,8 +12,8 @@ importers:
         specifier: 0.10.2-unstable.5
         version: 0.10.2-unstable.5
       '@tanglelabs/ssimon':
-        specifier: 0.8.1
-        version: 0.8.1
+        specifier: 0.8.4
+        version: 0.8.4
       '@types/elliptic':
         specifier: ^6.4.18
         version: 6.4.18
@@ -155,8 +155,8 @@ packages:
   '@stablelib/wipe@1.0.1':
     resolution: {integrity: sha512-WfqfX/eXGiAd3RJe4VU2snh/ZPwtSjLG4ynQ/vYzvghTh7dHFcI1wl+nrkWG6lGhukOxOsUHfv8dUXr58D0ayg==}
 
-  '@tanglelabs/ssimon@0.8.1':
-    resolution: {integrity: sha512-cn7Gj2emibqXVOKeSrAg8CqlwegH2CH0FuXKgAl9Eq30I/2G60GEPD3lZCMx+GDOmGyEepxLIAKFqlvf5WX6vw==}
+  '@tanglelabs/ssimon@0.8.4':
+    resolution: {integrity: sha512-xGjMO5Q29T9uW6KA3qk5PdfVPY9cpK7xkq1QdTYST7clECTbtupcwpZCFe8nkzEnmfxZcC8YWlpiCbKUsu1chw==}
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -299,6 +299,10 @@ packages:
     resolution: {integrity: sha512-IyEq64AdS6lUwtn3YSvGpu7KAGA2x5+fjRCUIa8+ccSLmWrODV/ICM5aa6hHV/19EPWef8/e322r9sQJJ6/3qA==}
     engines: {node: '>=14.14'}
 
+  key-did-resolver@4.0.0:
+    resolution: {integrity: sha512-+U2nd/0rjO4Yqe2hnHBD7ygcLRfT43Oje9IIjv1BlBi0lopwxZpIFQ7GekguOHK02r+JGdl8mpJVNHs5lvXVOA==}
+    engines: {node: '>=14.14'}
+
   make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
 
@@ -323,6 +327,9 @@ packages:
   multiformats@12.1.3:
     resolution: {integrity: sha512-eajQ/ZH7qXZQR2AgtfpmSMizQzmyYVmCql7pdhldPuYQi4atACekbJaQplk6dWyIi10jCaFnd6pqvcEFXjbaJw==}
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+
+  multiformats@13.3.2:
+    resolution: {integrity: sha512-qbB0CQDt3QKfiAzZ5ZYjLFOs+zW43vA4uyM8g27PeEuXZybUOFyjrVdP93HPBHMoglibwfkdVwbzfUq8qGcH6g==}
 
   multiformats@9.9.0:
     resolution: {integrity: sha512-HoMUjhH9T8DDBNT+6xzkrd9ga/XiBI4xLr58LJACwK6G3HTOPeMz4nB4KJs33L2BelrIJa7P0VuNaVF3hMYfjg==}
@@ -418,6 +425,9 @@ packages:
 
   uint8arrays@4.0.10:
     resolution: {integrity: sha512-AnJNUGGDJAgFw/eWu/Xb9zrVKEGlwJJCaeInlf3BkecE/zcTobk5YXYIPNQJO1q5Hh1QZrQQHf0JvcHqz2hqoA==}
+
+  uint8arrays@5.1.0:
+    resolution: {integrity: sha512-vA6nFepEmlSKkMBnLBaUMVvAC4G3CTmO58C12y4sq6WPDOR7mOFYOi7GlrQ4djeSbP6JG9Pv9tJDM97PedRSww==}
 
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
@@ -547,7 +557,7 @@ snapshots:
 
   '@stablelib/wipe@1.0.1': {}
 
-  '@tanglelabs/ssimon@0.8.1':
+  '@tanglelabs/ssimon@0.8.4':
     dependencies:
       '@sd-jwt/crypto-nodejs': 0.9.1
       '@sd-jwt/sd-jwt-vc': 0.9.1
@@ -558,6 +568,7 @@ snapshots:
       did-jwt-vc: 4.0.4
       did-resolver: 4.1.0
       jsonschema: 1.4.1
+      key-did-resolver: 4.0.0
     transitivePeerDependencies:
       - supports-color
 
@@ -708,6 +719,13 @@ snapshots:
       uint8arrays: 4.0.10
       varint: 6.0.0
 
+  key-did-resolver@4.0.0:
+    dependencies:
+      '@noble/curves': 1.4.0
+      multiformats: 13.3.2
+      uint8arrays: 5.1.0
+      varint: 6.0.0
+
   make-error@1.3.6: {}
 
   minimalistic-assert@1.0.1: {}
@@ -723,6 +741,8 @@ snapshots:
   multiformats@11.0.2: {}
 
   multiformats@12.1.3: {}
+
+  multiformats@13.3.2: {}
 
   multiformats@9.9.0: {}
 
@@ -813,6 +833,10 @@ snapshots:
   uint8arrays@4.0.10:
     dependencies:
       multiformats: 12.1.3
+
+  uint8arrays@5.1.0:
+    dependencies:
+      multiformats: 13.3.2
 
   undici-types@5.26.5: {}
 
